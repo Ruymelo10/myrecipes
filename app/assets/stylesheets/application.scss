@@ -14,3 +14,29 @@
  *= require_self
  */
 @import 'bootstrap';
+#logo{
+    float: left;
+    font-size: 1.7rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;   
+}
+#logo:hover{
+    text-decoration: none;
+}
+.center{
+    text-align: center;
+    h1{
+        font-size: 4rem;
+        font-weight: bold;
+    } 
+    color: blanchedalmond;
+    text-shadow: 1px 1px 0 black;
+}
+.jumbotron{
+    background-image: asset-url('cover_img.jpg');
+    background-position: center;
+    background-size: cover;
+    margin-top: 0.5rem;
+}

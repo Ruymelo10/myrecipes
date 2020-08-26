@@ -5,4 +5,10 @@
     </div>
 </div>
 <h4 align="center"> <%= @chef.chefname%>'s recipes </h4>
-<%= render 'recipes/recipe', obj: @chef.recipes %>
+<div class= "d-flex justify-content-center">
+    <%= will_paginate @chef_recipes, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer%>
+</div>
+<%= render 'recipes/recipe', obj: @chef_recipes %>
+<div class= "d-flex justify-content-center">
+    <%= will_paginate @chef_recipes, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+</div>

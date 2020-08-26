@@ -1,2 +1,9 @@
 <%= render 'shared/page_title', title:'showing all recipes' %>
+<div class="d-flex justify-content-center">
+   <%= will_paginate @recipes, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer%>
+</div>
 <%= render 'recipe', obj: @recipes%>
+
+<div class="d-flex justify-content-center">
+  <%= will_paginate @recipes, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer%>
+</div>

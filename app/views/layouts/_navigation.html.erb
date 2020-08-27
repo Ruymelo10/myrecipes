@@ -10,26 +10,46 @@
         <a class="nav-link" href="<%=chefs_path%>">Chefs<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link"href="<%=recipes_path%>">All recipes</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Recipes
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<%=new_recipe_path%>"> Create new recipe </a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+      <% if logged_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Recipes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<%=new_recipe_path%>"> Create new recipe </a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      <% end %>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <ul class="navbar-nav mr-md-5">
+      <%if logged_in? %>
+      <div class="dropdown">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <%= current_chef.chefname.capitalize %>'s Profile 
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button"><%= link_to "View your profile", chef_path(current_chef) %></button>
+          <button class="dropdown-item" type="button"><%= link_to "Edit your profile", edit_chef_path(current_chef) %></button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" type="button"><%= link_to "Log out", logout_path, method: :delete %></button>
+        </div>
+      </div>
+      <% else %>
+      <li class="nav-item">
+          <a class="btn btn-outline-success my-2 my-sm-0 text-success nav-link" href="<%=login_path%>">Log in</a>
+      </li>
+      <% end %>
+    </ul>
   </div>
 </nav>

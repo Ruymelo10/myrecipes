@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
     def home
-        
-    end   
+        redirect_to recipes_path if logged_in?
+    end
 end

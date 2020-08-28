@@ -36,7 +36,7 @@
       <%if logged_in? %>
       <div class="dropdown">
         <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         <%= current_chef.chefname.capitalize %>'s Profile 
+         <%= current_chef.chefname.capitalize %>'s Profile <%= "Admin" if current_chef.admin?%>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
           <button class="dropdown-item" type="button"><%= link_to "View your profile", chef_path(current_chef) %></button>
